@@ -18,6 +18,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/', (req, res) => {
+  res.send('Server works!');
+});
+
 app.get('/places', async (req, res) => {
   const fileContent = await fs.readFile('./data/places.json');
 
@@ -50,4 +54,6 @@ app.use((req, res, next) => {
   res.status(404).json({ message: '404 - Not Found' });
 });
 
-app.listen(3000);
+app.listen(3000, () => {
+  console.log('Server start http://localhost:3000');
+});
